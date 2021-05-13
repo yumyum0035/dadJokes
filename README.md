@@ -29,3 +29,17 @@ Crear la web de chistes, el funcionamiento de los cuales es:
 
 Nota: En este ejercicio no es necesario maquetar la web, primero haremos que funcione para pasar a aplicarle los estilos.
 
+Ex 2:
+
+Modificar la web anterior porque el chiste aparezca en la web, en lugar de por consola.
+
+↪︎ Ex 3:
+
+Bien hecho! Ya tienes una web de chistes operativa.
+
+Puesto que está web está pensada para mostrar chistes a los usuarios a primera hora de la mañana para empiecen bien el día, añadiremos información meteorológica puesto que los puede ser de utilidad.
+
+Consumir una API de información meteorológica y mostrarla en la web. Esta API tiene que consumirse en la apertura, no mediante un botón.
+
+Nota: Todavía no es necesario maquetar la web, con mostrar una palabra que indique el tiempo es suficiente.
+
