@@ -36,10 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var buttonID = document.getElementById("next");
+var contentID = document.getElementById("content");
 var url = "https://icanhazdadjoke.com/";
+var data;
 function getJoke() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, data;
+        var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetch(url, { headers: { Accept: "application/json" } })];
@@ -49,9 +51,13 @@ function getJoke() {
                 case 2:
                     data = _a.sent();
                     console.log(data.joke);
+                    contentID.innerHTML = "" + data.joke;
                     return [2 /*return*/];
             }
         });
     });
 }
-buttonID.addEventListener("click", getJoke);
+function handleClick() {
+    getJoke();
+}
+buttonID.addEventListener("click", handleClick);

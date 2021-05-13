@@ -1,6 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Sue+Ellen+Francisco&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+
 :root {
     /* colors */
-    --accent-color: #69b6cf; /* maximum blue */
+    /*--accent-color: #69b6cf; /* maximum blue */
+    --accent-color: #6dbbbb; /* verdigris */
     --side-color: white;
     --black: #202020;
     --light-gray: #ddd;
@@ -11,9 +15,10 @@
  
     /* fonts */
     --helvetica: Helvetica, sans-serif;
+    /* --niceFont: 'Sue Ellen Francisco', cursive; */
+    --niceFont: 'Quicksand', sans-serif;
 }
 
- 
 * { box-sizing: border-box; }
 html { font-size: 16px; }
  
@@ -32,12 +37,56 @@ a:link, a:active, a:visited {
 
 a:hover { color:var(--side-color); }
 
-p { margin: 10px; }
+p {  margin: 10px; }
 
-footer {
-    background: var(--black);
+main { 
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 25px;
+}
+
+button {
+    font-family: var(--niceFont);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    border: none;
+    padding: 15px 25px;
+
+    justify-self: center;
+}
+
+.accent-bg {
+    background-color: var(--accent-color);
     color: var(--side-color);
-    padding: 50px;
+}
+
+.speech-bubble {
+    font-family: var(--niceFont);
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.75;
+    text-align: center;
+    
+    width: calc(100vw - 20px);
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 15px;
+
+    position:relative;
+}
+
+.speech-bubble:after {
+    /* this is the tail! */
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 50px solid transparent;
+    border-top: 60px solid var(--accent-color);
+    right: 50%;
+    bottom: -50px; /* same size as border left */
 }
 
 /****** media queries (mobile first) ******/
