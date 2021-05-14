@@ -11,6 +11,10 @@ We worked with API calls and showing information from a json file on console.
 
 Using the Dad Joke API we obtain a random joke and show it on the website.
 
+* https://openweathermap.org
+
+API to show the weather.
+
 
 # Techonologies used
 
