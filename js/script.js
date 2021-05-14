@@ -1,7 +1,8 @@
-let buttonID = document.getElementById("next")!;
-let weatherButton = document.getElementById("weatherCall")!;
-let contentID = document.getElementById("content")!;
-const apiKey = "apihere";
+import { key } from "./config.js" ;
+
+let buttonID = document.getElementById("next");
+let contentID = document.getElementById("content");
+const apiKey = key();
 const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=${apiKey}`;
 const jokeURL = "https://icanhazdadjoke.com/";
 
@@ -17,12 +18,12 @@ async function getWeather() {
   showWeather(data.weather[0]);
 }
 
-function showWeather(weather:any){
+function showWeather(weather){
   let title = document.createElement("h3");
-  document.getElementById("container-0")!.appendChild(title);
+  document.getElementById("container-0").appendChild(title);
   title.innerHTML = `${weather.main}`;
   let description = document.createElement("p");
-  document.getElementById("container-0")!.appendChild(description);
+  document.getElementById("container-0").appendChild(description);
   description.innerHTML = `${weather.description}`;
 }
 
@@ -35,4 +36,4 @@ function handleWeather() {
 }
 
 buttonID.addEventListener("click", handleClick);
-weatherButton.addEventListener("click", handleWeather);
+handleWeather();
