@@ -36,28 +36,59 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var buttonID = document.getElementById("next");
+var weatherButton = document.getElementById("weatherCall");
 var contentID = document.getElementById("content");
-var url = "https://icanhazdadjoke.com/";
-var data;
+var apiKey = "010eaa1c94e3722d95a3184461a22278";
+// const weatherURL = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${apiKey}`;
+var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=" + apiKey;
+var jokeURL = "https://icanhazdadjoke.com/";
 function getJoke() {
     return __awaiter(this, void 0, void 0, function () {
-        var response;
+        var response, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch(url, { headers: { Accept: "application/json" } })];
+                case 0: return [4 /*yield*/, fetch(jokeURL, { headers: { Accept: "application/json" } })];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
                 case 2:
                     data = _a.sent();
-                    console.log(data.joke);
                     contentID.innerHTML = "" + data.joke;
                     return [2 /*return*/];
             }
         });
     });
 }
+function getWeather() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch(weatherURL)];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    data = _a.sent();
+                    showWeather(data.weather[0]);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function showWeather(weather) {
+    var title = document.createElement("h3");
+    document.getElementById("container-0").appendChild(title);
+    title.innerHTML = "" + weather.main;
+    var description = document.createElement("p");
+    document.getElementById("container-0").appendChild(description);
+    description.innerHTML = "" + weather.description;
+}
 function handleClick() {
     getJoke();
 }
+function handleWeather() {
+    getWeather();
+}
 buttonID.addEventListener("click", handleClick);
+weatherButton.addEventListener("click", handleWeather);

@@ -1,4 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Sue+Ellen+Francisco&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
 
 :root {
@@ -15,7 +14,6 @@
  
     /* fonts */
     --helvetica: Helvetica, sans-serif;
-    /* --niceFont: 'Sue Ellen Francisco', cursive; */
     --niceFont: 'Quicksand', sans-serif;
 }
 
@@ -23,12 +21,22 @@
 html { font-size: 16px; }
  
 body {
-    font-family: var(--helvetica);
+    font-family: var(--niceFont);
     font-size: 1rem;
+    text-align: center;
+}
+
+header {
+    padding: 25px;
+    height: 25vh;
+    align-content: center;
 }
  
 h1 { font-size: 3rem; }
 h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+h1, h2, h3 { margin: 10px; }
  
 a:link, a:active, a:visited {
     color: var(--accent-color);
@@ -37,25 +45,32 @@ a:link, a:active, a:visited {
 
 a:hover { color:var(--side-color); }
 
-p {  margin: 10px; }
+p {  margin: 20px;}
 
 main { 
     display: grid;
     grid-template-columns: auto;
     grid-gap: 25px;
+    justify-items: center;
+    align-items: center;
+}
+
+.container {
+    height: 50vh;
 }
 
 button {
-    font-family: var(--niceFont);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
 
     border: none;
     padding: 15px 25px;
-
-    justify-self: center;
+    margin: 25px;
 }
+
+button:hover { cursor: pointer; }
+button:active { background: #69b6cf; }
 
 .accent-bg {
     background-color: var(--accent-color);
@@ -63,11 +78,9 @@ button {
 }
 
 .speech-bubble {
-    font-family: var(--niceFont);
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.75;
-    text-align: center;
     
     width: calc(100vw - 20px);
     margin: 50px auto;
@@ -88,6 +101,18 @@ button {
     right: 50%;
     bottom: -50px; /* same size as border left */
 }
+
+/* bear svg */
+.chist-bear {
+    margin: 0;
+}
+
+.chist-bear svg {
+    width: 100%;
+}
+.arms, .body { fill: #a07452; /* grizzly */ }
+.white { fill: #fff; }
+.paws { fill: #dc986c; }
 
 /****** media queries (mobile first) ******/
 /* Small devices (landscape phones, 576px and up) */
