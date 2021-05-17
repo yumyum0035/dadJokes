@@ -48,6 +48,7 @@ a:link, a:active, a:visited, a:hover {
 }
 
 main { 
+    padding: 100px;
     display: grid;
     grid-template-columns: clamp(300px, 50%, 900px);
     justify-content: center;
@@ -58,6 +59,8 @@ main {
     height: 50vh;
     width: 100%;
 }
+
+#weather, #container-1, #container-2 { margin: 25px; }
 
 button {
     font-size: 1rem;
