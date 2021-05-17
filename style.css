@@ -23,6 +23,8 @@ body {
     font-family: var(--niceFont);
     font-size: 1rem;
     text-align: center;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 header {
@@ -39,22 +41,23 @@ h1, h2, h3 { margin: 10px; }
 
 p { margin: 20px;}
  
-a:link, a:active, a:visited {
-    color: var(--accent-color);
+a:link, a:active, a:visited, a:hover {
+    /* color: var(--accent-color); */
+    color:var(--side-color);
     text-decoration: none;
 }
-
-a:hover { color:var(--side-color); }
 
 main { 
     display: grid;
     grid-template-columns: clamp(300px, 50%, 900px);
-    grid-gap: 25px;
-    justify-items: center;
     justify-content: center;
+    justify-items: center;
 }
 
-.container {  height: 50vh; }
+#container-1, #container-2 {
+    height: 50vh;
+    width: 100%;
+}
 
 button {
     font-size: 1rem;
@@ -81,7 +84,6 @@ button:hover {
     font-weight: 300;
     line-height: 1.75;
     
-    width: calc(100vw - 20px);
     margin: 50px auto;
     padding: 25px;
     border-radius: 15px;
@@ -101,12 +103,8 @@ button:hover {
     bottom: -50px; /* same size as border left */
 }
 
-/* bear svg */
-.chist-bear {
-    margin: 0 auto;
-    width: clamp(300px, 50%, 600px);
-}
 
+/* bear svg */
 .arms, .body { fill: #a07452; /* grizzly */ }
 .white { fill: #fff; }
 .paws { fill: #dc986c; }
@@ -138,16 +136,18 @@ path {
 .thunder { animation: 2s thunder ease-out infinite; }
 .snow { animation: 2s snowAnim  ease-out infinite; }
 
-.few-clouds { transform: translate(80px, 5px); z-index: -1; }
-.broken-clouds { transform: translate(60px, 5px); z-index: -1; }
-.rain-cloud-back { z-index: -1; }
-
+.few-clouds { transform: translate(80px, 5px); }
+.broken-clouds { transform: translate(60px, 5px); }
+.scattered-clouds { height: 110px; margin: 25px; }
+.back { z-index: -1; }
 
 .size80 {
     /* works on div containing svg, but not directly on svg */
     width: 80%;
     height: 80%;
 }
+
+
 
 /* animations */
 @keyframes spin {
@@ -249,6 +249,16 @@ path {
     }
 }
 
+@keyframes appear {
+    0% { transform: translateY(500px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes speech-fade {
+    0% { opacity: 0; }
+    90% { opacity: 0; }
+    100% { opacity: 100% }
+}
 
 /****** media queries (mobile first) ******/
 /* Small devices (landscape phones, 576px and up) */

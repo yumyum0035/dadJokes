@@ -1,4 +1,5 @@
 import { key } from "./config.js" ;
+AOS.init({ easing: 'ease-in-quad',});
 
 let buttonID = document.getElementById("next");
 let contentID = document.getElementById("content");
@@ -67,7 +68,7 @@ function selectWeather(icon) {
 
     //few clouds day
     case "02d":
-      child1.className = "child-1 few-clouds";
+      child1.className = "child-1 few-clouds back";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsSun}</svg>`;
       child2.className = "child-2";
       child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewClouds}</svg>`;
@@ -77,7 +78,7 @@ function selectWeather(icon) {
 
     //few clouds night
     case "02n":
-      child1.className = "child-1 few-clouds size80";
+      child1.className = "child-1 few-clouds back size80";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsMoon}</svg>`;
       child2.className = "child-2";
       child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewClouds}</svg>`;
@@ -88,7 +89,7 @@ function selectWeather(icon) {
     //scattered clouds
     case "03d":
     case "03n":
-      child1.className = "child-1 cloud";
+      child1.className = "child-1 cloud scattered-clouds";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.scatteredCloud}</svg>`;
       document.getElementById("father").appendChild(child1);
     break;
@@ -96,7 +97,7 @@ function selectWeather(icon) {
     // broken-clouds
     case "04d":
     case "04n":
-      child1.className = "child-1 broken-clouds size80 storm";
+      child1.className = "child-1 broken-clouds back size80 storm";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.brokenCloudsStorm}</svg>`;
       child2.className = "child-2 cloud";
       child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.brokenCloud}</svg>`;
@@ -107,11 +108,11 @@ function selectWeather(icon) {
     //shower rain
     case "09d":
     case "09n":
-      child1.className = "child-1 size80 rain-cloud-back storm";
+      child1.className = "child-1 size80 back storm";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainStormCloud}</svg>`;
       child2.className = "child-2";
       child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
-      child3.className = "size80 rain";
+      child3.className = "child-3 size80 rain";
       child3.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rain}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
@@ -120,7 +121,7 @@ function selectWeather(icon) {
 
     //rain day
     case "10d":
-      child1.className = "child-1 size80 broken-clouds";
+      child1.className = "child-1 size80 broken-clouds back";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsSun}</svg>`;
       child2.className = "child-2";
       child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
@@ -133,7 +134,7 @@ function selectWeather(icon) {
 
     //rain night
     case "10n":
-      child1.className = "child-1 size80 broken-clouds";
+      child1.className = "child-1 size80 broken-clouds back";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsMoon}</svg>`;
       child2.className = "child-2";
       child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
@@ -147,7 +148,7 @@ function selectWeather(icon) {
     //thunderstorm
     case "11d":
     case "11n":
-      child1.className = "child-1 size80 rain-cloud-back storm";
+      child1.className = "child-1 size80 back storm";
       child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainStormCloud}</svg>`;
       child2.className = "child-2 cloud";
       child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
@@ -176,13 +177,12 @@ function selectWeather(icon) {
   }
 }
 
-function handleClick() {
-  getJoke();
-}
+// function handleClick() { getJoke(); }
 
 function handleWeather() {
   getWeather();
 }
 
-buttonID.addEventListener("click", handleClick);
+// buttonID.addEventListener("click", handleClick);
 handleWeather();
+getJoke();
