@@ -1,7 +1,15 @@
-# Dad jokes
+# Good morning!
 
-Get a random dad joke.
+Get a random dad joke after checking the weather report!
 
+
+# How to implement API key
+
+Create a new .js file called config.js and add:
+
+``
+export function key() { return "yourAPIkeyhere"; }
+``
 
 # What we worked on
 
@@ -15,11 +23,13 @@ Using the Dad Joke API we obtain a random joke and show it on the website.
 
 API to show the weather.
 
+* CSS animations
 
 # Techonologies used
 
 * Javascript
 * HTML
+* https://michalsnik.github.io/aos/ Animate on Scroll library
 
 ## Backlog
 
