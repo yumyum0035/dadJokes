@@ -3,13 +3,15 @@
 Get a random dad joke after checking the weather report!
 
 
-# How to implement API key
+# How to implement OpenWeather API key
 
-Create a new .js file called config.js and add:
+Create a new .js file called config.js and add the following line:
 
 ``
 export function key() { return "yourAPIkeyhere"; }
 ``
+
+for more information about the API key, read this https://openweathermap.org/appid
 
 # What we worked on
 
