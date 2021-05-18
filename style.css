@@ -1,18 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
 
-:root {
-    /* colors */
+:root { /* variables */
     --accent-color: #6dbbbb; /* verdigris */
     --side-color: white;
-    --black: #202020;
-    --light-gray: #ddd;
- 
-    /* utlities */
-    --box-shadow: 0 2px 2px var(--light-gray);
-    --border: 1px solid var(--accent-color);
- 
-    /* fonts */
-    --helvetica: Helvetica, sans-serif;
     --niceFont: 'Quicksand', sans-serif;
 }
 
@@ -36,14 +26,11 @@ header {
 h1 { font-size: 3rem; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.5rem; }
-
 h1, h2, h3 { margin: 10px; }
-
 p { margin: 20px;}
  
 a:link, a:active, a:visited, a:hover {
-    /* color: var(--accent-color); */
-    color:var(--side-color);
+    color: var(--accent-color);
     text-decoration: none;
 }
 
@@ -61,21 +48,6 @@ main {
 }
 
 #weather, #container-1, #container-2 { margin: 25px; }
-
-button {
-    font-size: 1rem;
-    font-weight: 400;
-    text-transform: uppercase;
-
-    border: none;
-    padding: 15px 25px;
-    margin: 25px;
-}
-
-button:hover { 
-    cursor: pointer; 
-    animation: 1s wiggle ease infinite;
-}
 
 .accent-bg {
     background-color: var(--accent-color);
@@ -95,7 +67,7 @@ button:hover {
 }
 
 .speech-bubble:after {
-    /* this is the tail! */
+    /* this is the tail of the speech bubble */
     content: "";
     width: 0;
     height: 0;
@@ -106,15 +78,13 @@ button:hover {
     bottom: -50px; /* same size as border left */
 }
 
-
 /* bear svg */
 .arms, .body { fill: #a07452; /* grizzly */ }
 .white { fill: #fff; }
 .paws { fill: #dc986c; }
 
 /* weather */
-path {
-    /* these two make the sun be on its center! */
+path { /* these two make the svg be on its center! */
     transform-box: fill-box;
     transform-origin: center;
 }
@@ -144,13 +114,11 @@ path {
 .scattered-clouds { height: 110px; margin: 25px; }
 .back { z-index: -1; }
 
-.size80 {
-    /* works on div containing svg, but not directly on svg */
-    width: 80%;
-    height: 80%;
-}
+/* works on div containing svg, but not directly on svg */
+.size80 { width: 80%; height: 80%; }
 
-
+/*make this animation as in going from uop to down all the time in a cute way*/
+.fa-chevron-down { animation: 1s bump ease-in infinite;}
 
 /* animations */
 @keyframes spin {
@@ -179,37 +147,10 @@ path {
     100% { transform: translate(75px); }
 }
 
-@keyframes wiggle {
-    0% {
-      transform: rotate(-3deg);
-      box-shadow: var(--box-shadow);
-    }
-    20% { transform: rotate(15deg); }
-    40% { transform: rotate(-10deg);}
-    60% { transform: rotate(5deg); }
-    90% { transform: rotate(-1deg); }
-    100% {
-      transform: rotate(0);
-      box-shadow: var(--box-shadow);
-    }
-}
-
 @keyframes moon {
     0% { transform: rotate(-15deg); }
     50% { transform: rotate(15deg); }
     100% { transform: rotate(-15deg); }
-}
-
-@keyframes glow {
-    0% { box-shadow: 0 0 10px -10px var(--accent-color); }
-    50% { box-shadow: 0 0 10px 15px var(--accent-color); }
-    100% { box-shadow: 0 0 10px -10px var(--accent-color); }
-}
-
-@keyframes fade {
-    0% { opacity: 0%; }
-    50% { opacity: 100%; }
-    100% { opacity: 0%; }
 }
 
 @keyframes rain {
@@ -262,19 +203,3 @@ path {
     90% { opacity: 0; }
     100% { opacity: 100% }
 }
-
-/****** media queries (mobile first) ******/
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { }
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { }
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { }
-
-/* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { }
-
-/* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) { }

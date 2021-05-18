@@ -1,7 +1,6 @@
-import { key } from "./config.js" ;
-AOS.init({ easing: 'ease-in-quad',});
+import { key } from "./config.js";
+AOS.init({ easing: "ease-in-quad" });
 
-let buttonID = document.getElementById("next");
 let contentID = document.getElementById("content");
 const apiKey = key();
 const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=${apiKey}`;
@@ -15,17 +14,19 @@ const weatherPaths = {
   fewClouds: `<path fill="#cce5ff" d="M93.755,57.636 C149.218,57.636 147.379,111.261 147.379,111.261 C147.379,111.261 173.666,113.156 173.666,142.805 C173.666,160.807 159.072,175.400 141.070,175.400 C123.069,175.400 63.013,175.400 40.656,175.400 C18.299,175.400 0.175,157.276 0.175,134.919 C0.175,90.006 45.913,94.437 45.913,94.437 C45.913,94.437 52.531,57.636 93.755,57.636 Z"/>`,
   scatteredCloud: `<path fill="#cce5ff" d="M106.413,0.119 C169.491,0.119 167.400,61.106 167.400,61.106 C167.400,61.106 197.296,63.262 197.296,96.981 C197.296,117.454 180.699,134.051 160.225,134.051 C139.752,134.051 71.451,134.051 46.024,134.051 C20.598,134.051 -0.015,113.439 -0.015,88.012 C-0.015,36.933 52.003,41.973 52.003,41.973 C52.003,41.973 59.530,0.119 106.413,0.119 Z"/>`,
   brokenCloudsStorm: `<path fill="#899aa5" d="M117.938,0.092 C173.402,0.092 171.563,53.717 171.563,53.717 C171.563,53.717 197.849,55.612 197.849,85.261 C197.849,103.263 183.256,117.856 165.254,117.856 C147.252,117.856 87.197,117.856 64.839,117.856 C42.482,117.856 24.358,99.732 24.358,77.375 C24.358,32.462 70.097,36.894 70.097,36.894 C70.097,36.894 76.715,0.092 117.938,0.092 Z"/>`,
-  brokenCloud: `<path fill="#cce5ff" d="M93.755,31.636 C149.218,31.636 147.379,85.261 147.379,85.261 C147.379,85.261 173.666,87.156 173.666,116.805 C173.666,134.807 159.072,149.400 141.070,149.400 C123.069,149.400 63.013,149.400 40.656,149.400 C18.299,149.400 0.175,131.276 0.175,108.919 C0.175,64.006 45.913,68.437 45.913,68.437 C45.913,68.437 52.531,31.636 93.755,31.636 Z"/>`, 
+  brokenCloud: `<path fill="#cce5ff" d="M93.755,31.636 C149.218,31.636 147.379,85.261 147.379,85.261 C147.379,85.261 173.666,87.156 173.666,116.805 C173.666,134.807 159.072,149.400 141.070,149.400 C123.069,149.400 63.013,149.400 40.656,149.400 C18.299,149.400 0.175,131.276 0.175,108.919 C0.175,64.006 45.913,68.437 45.913,68.437 C45.913,68.437 52.531,31.636 93.755,31.636 Z"/>`,
   rainStormCloud: `<path fill="#899aa5" d="M117.938,0.092 C173.402,0.092 171.563,53.717 171.563,53.717 C171.563,53.717 197.849,55.612 197.849,85.261 C197.849,103.263 183.256,117.856 165.254,117.856 C147.252,117.856 87.197,117.856 64.839,117.856 C42.482,117.856 24.358,99.732 24.358,77.375 C24.358,32.462 70.097,36.894 70.097,36.894 C70.097,36.894 76.715,0.092 117.938,0.092 Z"/>`,
   rainCloud: `<path fill="#cce5ff" d="M93.755,31.636 C149.218,31.636 147.379,85.261 147.379,85.261 C147.379,85.261 173.666,87.156 173.666,116.805 C173.666,134.807 159.072,149.400 141.070,149.400 C123.069,149.400 63.013,149.400 40.656,149.400 C18.299,149.400 0.175,131.276 0.175,108.919 C0.175,64.006 45.913,68.437 45.913,68.437 C45.913,68.437 52.531,31.636 93.755,31.636 Z"/>`,
   rain: `<path fill="#b5cce4" d="M151.690,124.112 C149.744,128.142 144.976,129.874 141.041,127.979 C137.105,126.084 135.493,121.280 137.439,117.249 C139.385,113.219 152.494,104.260 152.494,104.260 C152.494,104.260 153.636,120.081 151.690,124.112 ZM140.892,180.378 C138.945,184.409 134.177,186.140 130.242,184.245 C126.307,182.350 124.694,177.546 126.641,173.516 C128.587,169.485 141.695,160.526 141.695,160.526 C141.695,160.526 142.838,176.347 140.892,180.378 ZM114.735,156.531 C110.800,154.636 109.187,149.832 111.133,145.802 C113.080,141.771 126.188,132.812 126.188,132.812 C126.188,132.812 127.331,148.633 125.384,152.664 C123.438,156.695 118.670,158.426 114.735,156.531 ZM89.358,122.712 C85.422,120.817 83.810,116.014 85.756,111.983 C87.702,107.952 100.811,98.993 100.811,98.993 C100.811,98.993 101.953,114.815 100.007,118.845 C98.061,122.876 93.293,124.607 89.358,122.712 ZM89.209,175.112 C87.262,179.142 82.494,180.874 78.559,178.979 C74.624,177.084 73.011,172.280 74.958,168.249 C76.904,164.219 90.012,155.260 90.012,155.260 C90.012,155.260 91.155,171.081 89.209,175.112 ZM63.052,151.264 C59.117,149.369 57.504,144.566 59.450,140.535 C61.397,136.504 74.505,127.545 74.505,127.545 C74.505,127.545 75.648,143.367 73.701,147.397 C71.755,151.428 66.987,153.159 63.052,151.264 ZM36.620,126.925 C32.685,125.031 31.072,120.227 33.018,116.196 C34.965,112.166 48.073,103.207 48.073,103.207 C48.073,103.207 49.216,119.028 47.269,123.059 C45.323,127.089 40.555,128.820 36.620,126.925 ZM36.471,179.325 C34.525,183.355 29.757,185.087 25.821,183.192 C21.886,181.297 20.274,176.493 22.220,172.462 C24.166,168.432 37.274,159.473 37.274,159.473 C37.274,159.473 38.417,175.294 36.471,179.325 ZM10.314,155.478 C6.379,153.583 4.766,148.779 6.713,144.748 C8.659,140.718 21.767,131.759 21.767,131.759 C21.767,131.759 22.910,147.580 20.964,151.611 C19.017,155.641 14.250,157.373 10.314,155.478 Z"/>`,
-  thunder: `<path fill="#fcc72b" d="M95.000,154.000 L59.000,197.000 L72.000,162.000 L59.000,167.000 L75.000,127.000 L98.000,127.000 L82.000,159.000 L95.000,154.000 Z"/>`, 
+  thunder: `<path fill="#fcc72b" d="M95.000,154.000 L59.000,197.000 L72.000,162.000 L59.000,167.000 L75.000,127.000 L98.000,127.000 L82.000,159.000 L95.000,154.000 Z"/>`,
   snow: `<path fill="#cce5ff" d="M150.984,98.860 L150.981,101.100 L146.696,103.579 L150.428,105.734 L150.425,107.973 L148.487,109.096 L142.820,105.824 L136.475,109.496 L142.812,113.155 L148.486,109.870 L150.422,110.988 L150.420,113.228 L146.684,115.391 L150.963,117.861 L150.961,120.101 L149.023,121.222 L144.743,118.752 L144.738,123.068 L142.800,124.190 L140.864,123.072 L140.871,116.516 L134.534,112.858 L134.526,120.189 L140.193,123.461 L140.191,125.700 L138.252,126.822 L134.521,124.668 L134.516,129.619 L132.578,130.741 L130.641,129.623 L130.647,124.672 L126.911,126.835 L124.975,125.717 L124.978,123.477 L130.651,120.193 L130.659,112.861 L124.314,116.534 L124.308,123.090 L122.369,124.212 L120.433,123.095 L120.438,118.778 L116.153,121.258 L114.217,120.140 L114.219,117.900 L118.504,115.420 L114.772,113.266 L114.775,111.026 L116.713,109.904 L122.381,113.177 L128.726,109.504 L122.388,105.845 L116.714,109.129 L114.778,108.012 L114.780,105.772 L118.516,103.610 L114.237,101.139 L114.239,98.899 L116.178,97.777 L120.457,100.248 L120.461,95.932 L122.400,94.810 L124.336,95.927 L124.329,102.483 L130.666,106.143 L130.674,98.811 L125.007,95.539 L125.010,93.299 L126.948,92.177 L130.679,94.332 L130.685,89.382 L132.623,88.260 L134.559,89.377 L134.554,94.328 L138.289,92.165 L140.226,93.283 L140.223,95.523 L134.549,98.807 L134.541,106.138 L140.886,102.466 L140.893,95.910 L142.832,94.788 L144.767,95.905 L144.763,100.222 L149.047,97.742 L150.984,98.860 ZM109.496,156.579 L113.228,158.734 L113.225,160.973 L111.287,162.096 L105.620,158.824 L99.275,162.496 L105.612,166.155 L111.286,162.870 L113.222,163.988 L113.220,166.228 L109.484,168.391 L113.763,170.861 L113.761,173.101 L111.823,174.222 L107.543,171.752 L107.538,176.068 L105.600,177.190 L103.664,176.072 L103.671,169.516 L97.334,165.858 L97.326,173.189 L102.993,176.461 L102.991,178.700 L101.052,179.822 L97.321,177.668 L97.316,182.619 L95.378,183.741 L93.441,182.623 L93.447,177.672 L89.711,179.835 L87.775,178.717 L87.778,176.477 L93.451,173.193 L93.459,165.861 L87.114,169.534 L87.108,176.090 L85.169,177.212 L83.233,176.095 L83.238,171.778 L78.953,174.258 L77.017,173.140 L77.019,170.900 L81.304,168.420 L77.572,166.266 L77.575,164.026 L79.513,162.904 L85.181,166.177 L91.526,162.504 L85.188,158.845 L79.514,162.129 L77.578,161.012 L77.580,158.772 L81.316,156.610 L77.037,154.139 L77.039,151.899 L78.978,150.777 L83.257,153.248 L83.261,148.932 L85.200,147.810 L87.136,148.927 L87.129,155.483 L93.466,159.143 L93.474,151.811 L87.807,148.539 L87.810,146.299 L89.748,145.177 L93.479,147.332 L93.485,142.382 L95.423,141.260 L97.359,142.377 L97.354,147.328 L101.089,145.165 L103.026,146.283 L103.023,148.523 L97.349,151.807 L97.341,159.138 L103.686,155.466 L103.693,148.910 L105.632,147.788 L107.567,148.905 L107.563,153.222 L111.847,150.742 L113.784,151.860 L113.781,154.100 L109.496,156.579 ZM65.496,119.179 L69.228,121.334 L69.225,123.573 L67.287,124.696 L61.620,121.424 L55.275,125.096 L61.612,128.755 L67.286,125.470 L69.222,126.588 L69.220,128.828 L65.484,130.991 L69.763,133.461 L69.761,135.701 L67.823,136.822 L63.543,134.352 L63.538,138.668 L61.600,139.790 L59.664,138.672 L59.671,132.116 L53.334,128.458 L53.326,135.789 L58.993,139.061 L58.991,141.300 L57.052,142.422 L53.321,140.268 L53.316,145.219 L51.378,146.341 L49.441,145.223 L49.447,140.272 L45.711,142.435 L43.775,141.317 L43.778,139.077 L49.451,135.793 L49.459,128.461 L43.114,132.134 L43.108,138.690 L41.169,139.812 L39.233,138.695 L39.238,134.378 L34.953,136.858 L33.017,135.740 L33.019,133.500 L37.304,131.020 L33.572,128.866 L33.575,126.626 L35.513,125.504 L41.181,128.777 L47.526,125.104 L41.188,121.445 L35.514,124.729 L33.578,123.612 L33.580,121.372 L37.316,119.210 L33.037,116.739 L33.039,114.499 L34.978,113.377 L39.257,115.848 L39.261,111.532 L41.200,110.410 L43.136,111.527 L43.129,118.083 L49.466,121.743 L49.474,114.411 L43.807,111.139 L43.810,108.899 L45.748,107.777 L49.479,109.932 L49.485,104.982 L51.423,103.860 L53.359,104.977 L53.354,109.928 L57.089,107.765 L59.026,108.883 L59.023,111.123 L53.349,114.407 L53.341,121.738 L59.686,118.066 L59.693,111.510 L61.632,110.388 L63.567,111.505 L63.563,115.822 L67.847,113.342 L69.784,114.460 L69.781,116.700 L65.496,119.179 Z"/>`,
-  snowCloud: `<path fill="#899aa5" d="M98.719,-0.001 C157.220,-0.001 155.280,56.481 155.280,56.481 C155.280,56.481 183.006,58.478 183.006,89.707 C183.006,108.668 167.613,124.039 148.626,124.039 C129.638,124.039 66.294,124.039 42.713,124.039 C19.132,124.039 0.015,104.949 0.015,81.400 C0.015,34.093 48.258,38.761 48.258,38.761 C48.258,38.761 55.239,-0.001 98.719,-0.001 Z"/>`
-}
+  snowCloud: `<path fill="#899aa5" d="M98.719,-0.001 C157.220,-0.001 155.280,56.481 155.280,56.481 C155.280,56.481 183.006,58.478 183.006,89.707 C183.006,108.668 167.613,124.039 148.626,124.039 C129.638,124.039 66.294,124.039 42.713,124.039 C19.132,124.039 0.015,104.949 0.015,81.400 C0.015,34.093 48.258,38.761 48.258,38.761 C48.258,38.761 55.239,-0.001 98.719,-0.001 Z"/>`,
+};
 
 async function getJoke() {
-  let response = await fetch(jokeURL, { headers: { Accept: "application/json" } });
+  let response = await fetch(jokeURL, {
+    headers: { Accept: "application/json" },
+  });
   let data = await response.json();
   contentID.innerHTML = `${data.joke}`;
 }
@@ -36,7 +37,7 @@ async function getWeather() {
   showWeather(data.weather[0]);
 }
 
-function showWeather(weather){
+function showWeather(weather) {
   let title = document.createElement("h3");
   document.getElementById("weather").appendChild(title);
   title.innerHTML = `${weather.main}`;
@@ -48,127 +49,127 @@ function showWeather(weather){
 
 function selectWeather(icon) {
   let child1 = document.createElement("div");
-  let child2 =  document.createElement("div");
-  let child3 =  document.createElement("div");
+  let child2 = document.createElement("div");
+  let child3 = document.createElement("div");
 
-  switch(icon){
+  switch (icon) {
     //clear sky day
     case "01d":
       child1.className = "child-1 sun";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.clearSun}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.clearSun}</svg>`;
       document.getElementById("father").appendChild(child1);
-    break;
+      break;
 
     // clear sky night
     case "01n":
       child1.className = "child-1 moon";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.clearMoon}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.clearMoon}</svg>`;
       document.getElementById("father").appendChild(child1);
-    break;
+      break;
 
     //few clouds day
     case "02d":
       child1.className = "child-1 few-clouds back";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsSun}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsSun}</svg>`;
       child2.className = "child-2";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewClouds}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.fewClouds}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
-    break;
+      break;
 
     //few clouds night
     case "02n":
       child1.className = "child-1 few-clouds back size80";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsMoon}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsMoon}</svg>`;
       child2.className = "child-2";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewClouds}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.fewClouds}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
-    break;
+      break;
 
     //scattered clouds
     case "03d":
     case "03n":
       child1.className = "child-1 cloud scattered-clouds";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.scatteredCloud}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.scatteredCloud}</svg>`;
       document.getElementById("father").appendChild(child1);
-    break;
+      break;
 
     // broken-clouds
     case "04d":
     case "04n":
       child1.className = "child-1 broken-clouds back size80 storm";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.brokenCloudsStorm}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.brokenCloudsStorm}</svg>`;
       child2.className = "child-2 cloud";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.brokenCloud}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.brokenCloud}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
-    break;
+      break;
 
     //shower rain
     case "09d":
     case "09n":
       child1.className = "child-1 size80 back storm";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainStormCloud}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rainStormCloud}</svg>`;
       child2.className = "child-2";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
       child3.className = "child-3 size80 rain";
       child3.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rain}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
       document.getElementById("father").appendChild(child3);
-    break;
+      break;
 
     //rain day
     case "10d":
       child1.className = "child-1 size80 broken-clouds back";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsSun}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsSun}</svg>`;
       child2.className = "child-2";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
       child3.className = "child-3 size80 rain";
       child3.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rain}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
       document.getElementById("father").appendChild(child3);
-    break;
+      break;
 
     //rain night
     case "10n":
       child1.className = "child-1 size80 broken-clouds back";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsMoon}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.fewCloudsMoon}</svg>`;
       child2.className = "child-2";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
       child3.className = "child-3 size80 rain";
       child3.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rain}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
       document.getElementById("father").appendChild(child3);
-    break;
+      break;
 
     //thunderstorm
     case "11d":
     case "11n":
       child1.className = "child-1 size80 back storm";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainStormCloud}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rainStormCloud}</svg>`;
       child2.className = "child-2 cloud";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.rainCloud}</svg>`;
       child3.className = "child-3 thunder";
       child3.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.thunder}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
       document.getElementById("father").appendChild(child3);
-    break;
+      break;
 
     //snow
     case "13d":
     case "13n":
       child1.className = "child-1";
-      child1.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.snowCloud}</svg>`;
+      child1.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.snowCloud}</svg>`;
       child2.className = "child-2 snow";
-      child2.innerHTML=`<svg viewBox="0 0 200 200">${weatherPaths.snow}</svg>`;
+      child2.innerHTML = `<svg viewBox="0 0 200 200">${weatherPaths.snow}</svg>`;
       document.getElementById("father").appendChild(child1);
       document.getElementById("father").appendChild(child2);
-    break;
+      break;
 
     //mist
     case "50d":
